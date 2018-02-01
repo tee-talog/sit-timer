@@ -1,33 +1,59 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
-      <h1 class="title">
-        sit-timer
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+      <p>Remaining Time: {{ remainingTime }}</p>
+      <p>Type: {{ this.type }}</p>
     </div>
+    <button @click="handleStartClick">start</button>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+const Type = {
+  ACTIVE: "active",
+  COOL_DOWN: "cool down",
+  STRETCH: "stretch",
+  INACTIVE: "inactive"
+}
 
 export default {
-  components: {
-    AppLogo
+  data () {
+    const schedule = [
+      { time:  20, type: Type.ACTIVE },
+      { time: 120, type: Type.COOL_DOWN },
+      { time:  20, type: Type.ACTIVE },
+      { time: 120, type: Type.COOL_DOWN },
+      { time:  20, type: Type.ACTIVE },
+    ]
+    return {
+      schedule,
+      started: false,
+      remainingTime: schedule[0].time,
+      type: Type.INACTIVE,
+      pause: false
+    }
+  },
+  methods: {
+    async handleStartClick () {
+      // すでに開始している場合は無視
+      if (this.started) {
+        return
+      }
+      // 開始フラグを立てる
+      this.started = true
+      for (let { time, type } of this.schedule) {
+        this.type = type
+        for (let i of Array(time + 1).keys()) {
+          this.remainingTime = time - i
+          // 1秒待つ
+          await new Promise((resolve, reject) => setTimeout(() => resolve(), 1000))
+        }
+      }
+      // 初期化
+      this.started = false
+      this.remainingTime = schedule[0].time
+      this.type = Type.INACTIVE
+    }
   }
 }
 </script>
