@@ -1,58 +1,98 @@
 <template>
   <section class="container">
-    <div>
-      <p>Remaining Time: {{ remainingTime }}</p>
-      <p>Type: {{ this.type }}</p>
-    </div>
-    <button @click="handleStartClick">start</button>
+    <article>
+      <div>
+        <p>残り時間：{{ remainingTime }}秒</p>
+        <p>{{ type }}</p>
+      </div>
+      <div>
+        <button @click="handleStartClick" v-if="standby">start</button>
+        <button @click="handleRestartClick" v-else-if="paused">restart</button>
+        <button @click="handlePauseClick" v-else>pause</button>
+        <button @click="handleStopClick">stop</button>
+      </div>
+    </article>
   </section>
 </template>
 
 <script>
 const Type = {
-  ACTIVE: "active",
-  COOL_DOWN: "cool down",
-  STRETCH: "stretch",
-  INACTIVE: "inactive"
+  STANDBY: "Standby",
+  PAUSE: "Pause",
+
+  ACTION: "Action",
+  COOL_DOWN: "Cool-Down",
+  BREAKTIME: "Break Time",
+  STRETCH: "Stretch"
 }
 
 export default {
   data () {
     const schedule = [
-      { time:  20, type: Type.ACTIVE },
+      { time:  60, type: Type.STRETCH },
+      { time:  20, type: Type.ACTION },
+      { time: 120, type: Type.BREAKTIME },
+      { time:  20, type: Type.ACTION },
+      { time: 120, type: Type.BREAKTIME },
+      { time:  20, type: Type.ACTION },
       { time: 120, type: Type.COOL_DOWN },
-      { time:  20, type: Type.ACTIVE },
-      { time: 120, type: Type.COOL_DOWN },
-      { time:  20, type: Type.ACTIVE },
     ]
     return {
       schedule,
-      started: false,
       remainingTime: schedule[0].time,
-      type: Type.INACTIVE,
-      pause: false
+      type: Type.STANDBY,
+      paused: false,
+      stop: false
     }
   },
   methods: {
     async handleStartClick () {
-      // すでに開始している場合は無視
-      if (this.started) {
-        return
-      }
-      // 開始フラグを立てる
-      this.started = true
+      // 一番最初しか呼ばれない
       for (let { time, type } of this.schedule) {
         this.type = type
         for (let i of Array(time + 1).keys()) {
           this.remainingTime = time - i
           // 1秒待つ
-          await new Promise((resolve, reject) => setTimeout(() => resolve(), 1000))
+          // 無限ループで、ポーズ時以外はカウンタをインクリメントすることで、復帰ができる
+          for (let i = 0; i < 10;) {
+            await new Promise((resolve, reject) => setTimeout(() => resolve(), 100))
+            if (!this.paused) {
+              i++
+            }
+            // 途中でstopが押された場合
+            if (this.stop) {
+              this.stop = false
+                return
+            }
+          }
         }
       }
       // 初期化
-      this.started = false
       this.remainingTime = schedule[0].time
-      this.type = Type.INACTIVE
+      this.type = Type.STANDBY
+    },
+    handlePauseClick () {
+      this.paused = true
+    },
+    handleRestartClick () {
+      this.paused = false
+    },
+    handleStopClick () {
+      // 残り時間カウントのループを止める
+      this.stop = true
+      // 初期化
+      this.remainingTime = this.schedule[0].time
+      this.type = Type.STANDBY
+      this.paused = false
+    }
+  },
+  computed: {
+    standby () {
+      return this.type === Type.STANDBY
+    }
+  },
+  filters: {
+    typeToStateInJapanese () {
     }
   }
 }
