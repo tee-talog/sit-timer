@@ -55,13 +55,13 @@ const bgColorClassDefinition = {
 export default {
   data () {
     const schedule = [
-      { time:  6, type: Type.STRETCH },
-      { time:  2, type: Type.ACTION },
-      { time: 12, type: Type.BREAKTIME },
-      { time:  2, type: Type.ACTION },
-      { time: 12, type: Type.BREAKTIME },
-      { time:  2, type: Type.ACTION },
-      { time: 12, type: Type.COOL_DOWN },
+      { time:   3, type: Type.STRETCH },
+      { time:   2, type: Type.ACTION },
+      { time:   5, type: Type.BREAKTIME },
+      { time:   2, type: Type.ACTION },
+      { time:   5, type: Type.BREAKTIME },
+      { time:   2, type: Type.ACTION },
+      { time:   5, type: Type.COOL_DOWN },
     ]
     return {
       schedule,
