@@ -1,7 +1,7 @@
 <template>
   <section class="container" :class="bgColorClass">
     <article>
-      <div>
+      <div class="state-display">
         <p>残り時間：{{ remainingTime }}秒</p>
         <p>{{ type }}</p>
       </div>
@@ -138,6 +138,11 @@ export default {
   padding-top: 15px;
 }
 
+.state-display {
+  background-color: rgba(255, 255, 255, .8);
+  padding: 10px;
+  border-radius: 10px;
+}
 .bg_action {
   background-color: #F00;
 }
