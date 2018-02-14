@@ -58,6 +58,9 @@ const bgColorClassDefinition = {
   [Type.BREAKTIME]: "bg_breaktime"
 }
 
+// ミリ秒スリープする関数
+const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeout(() => resolve(), milliseconds))
+
 export default {
   data () {
     const schedule = [
@@ -88,7 +91,7 @@ export default {
           // 1秒待つ
           // 無限ループで、ポーズ時以外はカウンタをインクリメントすることで、復帰ができる
           for (let i = 0; i < 10;) {
-            await new Promise((resolve, reject) => setTimeout(() => resolve(), 100))
+            await sleep(100)
             if (!this.paused) {
               i++
             }
