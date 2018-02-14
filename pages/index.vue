@@ -75,7 +75,7 @@ export default {
         }
       }
       // 初期化
-      this.remainingTime = schedule[0].time
+      this.remainingTime = this.schedule[0].time
       this.type = Type.STANDBY
     },
     handlePauseClick () {
