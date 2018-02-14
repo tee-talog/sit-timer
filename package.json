@@ -21,6 +21,7 @@
   },
   "homepage": "https://tee-talog.github.io/sit-timer",
   "dependencies": {
+    "element": "^0.1.4",
     "nuxt": "^1.0.0"
   },
   "devDependencies": {
