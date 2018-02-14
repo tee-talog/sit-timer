@@ -11,6 +11,7 @@
           :status="(progressOfSchedule === 100) ? 'success' : ''"
         ></el-progress>
       </div>
+
       <div>
         <el-button
           type="primary"
@@ -142,7 +143,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container {
   min-height: 100vh;
   display: flex;
