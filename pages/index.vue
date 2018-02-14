@@ -65,7 +65,7 @@ export default {
     ]
     return {
       schedule,
-      remainingTime: schedule[0].time,
+      remainingTime: 0,
       type: Type.STANDBY,
       paused: false,
       stop: false
@@ -94,7 +94,7 @@ export default {
         }
       }
       // 初期化
-      this.remainingTime = this.schedule[0].time
+      this.remainingTime = 0
       this.type = Type.STANDBY
     },
     handlePauseClick () {
@@ -107,7 +107,7 @@ export default {
       // 残り時間カウントのループを止める
       this.stop = true
       // 初期化
-      this.remainingTime = this.schedule[0].time
+      this.remainingTime = 0
       this.type = Type.STANDBY
       this.paused = false
     }
