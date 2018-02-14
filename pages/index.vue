@@ -43,7 +43,6 @@
 <script>
 const Type = {
   STANDBY: "Standby",
-  PAUSE: "Pause",
 
   ACTION: "Action",
   COOL_DOWN: "Cool-Down",
