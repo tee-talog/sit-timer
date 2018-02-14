@@ -2,7 +2,7 @@
   "name": "sit-timer",
   "version": "1.0.0",
   "description": "Nuxt.js project",
-  "author": "talog <tee.talog@gmail.com>",
+  "author": "tee-talog",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -16,7 +16,6 @@
     "type": "git",
     "url": "git+https://github.com/tee-talog/sit-timer.git"
   },
-  "author": "tee-talog",
   "bugs": {
     "url": "https://github.com/tee-talog/sit-timer/issues"
   },
