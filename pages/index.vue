@@ -136,14 +136,9 @@ export default {
     },
     progressOfSchedule () {
       return Math.round(this.progress / (this.schedule.length - 1) * 100)
-    },
-    steps () {
-      return this.schedule.filter((elm) => elm.type !== Type.PRECOUNT)
     }
   },
   filters: {
-    typeToStateInJapanese () {
-    }
   }
 }
 </script>
