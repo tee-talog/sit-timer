@@ -55,17 +55,17 @@ const bgColorClassDefinition = {
 export default {
   data () {
     const schedule = [
-      { time:  60, type: Type.STRETCH },
-      { time:  20, type: Type.ACTION },
-      { time: 120, type: Type.BREAKTIME },
-      { time:  20, type: Type.ACTION },
-      { time: 120, type: Type.BREAKTIME },
-      { time:  20, type: Type.ACTION },
-      { time: 120, type: Type.COOL_DOWN },
+      { time:   3, type: Type.STRETCH },
+      { time:   2, type: Type.ACTION },
+      { time:   5, type: Type.BREAKTIME },
+      { time:   2, type: Type.ACTION },
+      { time:   5, type: Type.BREAKTIME },
+      { time:   2, type: Type.ACTION },
+      { time:   5, type: Type.COOL_DOWN },
     ]
     return {
       schedule,
-      remainingTime: schedule[0].time,
+      remainingTime: 0,
       type: Type.STANDBY,
       paused: false,
       stop: false
@@ -94,7 +94,7 @@ export default {
         }
       }
       // 初期化
-      this.remainingTime = this.schedule[0].time
+      this.remainingTime = 0
       this.type = Type.STANDBY
     },
     handlePauseClick () {
@@ -107,7 +107,7 @@ export default {
       // 残り時間カウントのループを止める
       this.stop = true
       // 初期化
-      this.remainingTime = this.schedule[0].time
+      this.remainingTime = 0
       this.type = Type.STANDBY
       this.paused = false
     }
