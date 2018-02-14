@@ -1,6 +1,6 @@
 <template>
   <el-container class="app-container">
-    <el-main>
+    <el-main class="app-main">
       <nuxt/>
     </el-main>
   </el-container>
@@ -24,6 +24,7 @@ html {
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 .button--green {
@@ -57,5 +58,8 @@ html {
 
 .app-container {
   height: 100vh;
+}
+.app-main {
+  padding: 0;
 }
 </style>
