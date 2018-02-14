@@ -94,8 +94,7 @@ export default {
         }
       }
       // 初期化
-      this.remainingTime = 0
-      this.type = Type.STANDBY
+      this.reset()
     },
     handlePauseClick () {
       this.paused = true
@@ -106,6 +105,10 @@ export default {
     handleStopClick () {
       // 残り時間カウントのループを止める
       this.stop = true
+      // 初期化
+      this.reset()
+    },
+    reset () {
       // 初期化
       this.remainingTime = 0
       this.type = Type.STANDBY
