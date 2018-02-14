@@ -1,7 +1,7 @@
 <template>
-  <section class="container">
+  <section class="container" :class="bgColorClass">
     <article>
-      <div>
+      <div class="state-display">
         <p>残り時間：{{ remainingTime }}秒</p>
         <p>{{ type }}</p>
       </div>
@@ -24,6 +24,13 @@ const Type = {
   COOL_DOWN: "Cool-Down",
   BREAKTIME: "Break Time",
   STRETCH: "Stretch"
+}
+
+const bgColorClassDefinition = {
+  [Type.ACTION]: "bg_action",
+  [Type.COOL_DOWN]: "bg_cool-down",
+  [Type.STRETCH]: "bg_stretch",
+  [Type.BREAKTIME]: "bg_breaktime"
 }
 
 export default {
@@ -89,6 +96,9 @@ export default {
   computed: {
     standby () {
       return this.type === Type.STANDBY
+    },
+    bgColorClass () {
+      return bgColorClassDefinition[this.type] || ""
     }
   },
   filters: {
@@ -127,4 +137,23 @@ export default {
 .links {
   padding-top: 15px;
 }
+
+.state-display {
+  background-color: rgba(255, 255, 255, .8);
+  padding: 10px;
+  border-radius: 10px;
+}
+.bg_action {
+  background-color: #F00;
+}
+.bg_cool-down {
+  background-color: #00F;
+}
+.bg_stretch {
+  background-color: #FF0;
+}
+.bg_breaktime {
+  background-color: #0F0;
+}
+
 </style>
