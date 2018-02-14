@@ -1,8 +1,13 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <el-container class="app-container">
+    <el-main>
+      <nuxt/>
+    </el-main>
+  </el-container>
 </template>
+
+<script>
+</script>
 
 <style>
 html {
@@ -48,5 +53,9 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.app-container {
+  height: 100vh;
 }
 </style>
