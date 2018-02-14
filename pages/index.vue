@@ -137,4 +137,18 @@ export default {
 .links {
   padding-top: 15px;
 }
+
+.bg_action {
+  background-color: #F00;
+}
+.bg_cool-down {
+  background-color: #00F;
+}
+.bg_stretch {
+  background-color: #FF0;
+}
+.bg_breaktime {
+  background-color: #0F0;
+}
+
 </style>
