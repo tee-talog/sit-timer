@@ -2,7 +2,7 @@
   <section class="container" :class="bgColorClass">
     <article>
       <div class="state-display">
-        <p>残り時間：{{ remainingTime }}秒</p>
+        <p>残り時間：{{ remainingTime | spacePadding }}秒</p>
         <p>{{ type }}</p>
         <el-progress
           :text-inside="true"
@@ -139,6 +139,11 @@ export default {
     }
   },
   filters: {
+    spacePadding (str) {
+      // スペースパディングする
+      // 固定長文字列じゃないとあまり意味がない
+      return ("   " + str).slice(-3)
+    }
   }
 }
 </script>
