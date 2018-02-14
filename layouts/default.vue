@@ -1,8 +1,13 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <el-container class="app-container">
+    <el-main class="app-main">
+      <nuxt/>
+    </el-main>
+  </el-container>
 </template>
+
+<script>
+</script>
 
 <style>
 html {
@@ -19,6 +24,7 @@ html {
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 .button--green {
@@ -48,5 +54,12 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.app-container {
+  height: 100vh;
+}
+.app-main {
+  padding: 0;
 }
 </style>

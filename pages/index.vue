@@ -1,8 +1,8 @@
 <template>
   <section class="container" :class="bgColorClass">
-    <article>
+    <article class="content">
       <div class="state-display">
-        <p>残り時間：{{ remainingTime }}秒</p>
+        <p>残り{{ remainingTime | spacePadding }}秒</p>
         <p>{{ type }}</p>
         <el-progress
           :text-inside="true"
@@ -11,28 +11,29 @@
           :status="(progressOfSchedule === 100) ? 'success' : ''"
         ></el-progress>
       </div>
+
       <div>
         <el-button
           type="primary"
-          class="start-button"
+          class="button start-button"
           @click="handleStartClick"
           v-if="standby"
         >start</el-button>
         <el-button
           type="primary"
-          class="restart-button"
+          class="button restart-button"
           @click="handleRestartClick"
           v-else-if="paused"
         >restart</el-button>
         <el-button
           type="warning"
-          class="pause-button"
+          class="button pause-button"
           @click="handlePauseClick"
           v-else
         >pause</el-button>
         <el-button
           type="danger"
-          class="stop-button"
+          class="button stop-button"
           @click="handleStopClick"
         >stop</el-button>
       </div>
@@ -43,7 +44,6 @@
 <script>
 const Type = {
   STANDBY: "Standby",
-  PAUSE: "Pause",
 
   ACTION: "Action",
   COOL_DOWN: "Cool-Down",
@@ -120,7 +120,6 @@ export default {
       this.reset()
     },
     reset () {
-      // 初期化
       this.remainingTime = 0
       this.type = Type.STANDBY
       this.paused = false
@@ -139,17 +138,22 @@ export default {
     }
   },
   filters: {
+    spacePadding (str) {
+      // スペースパディングする
+      // 固定長文字列じゃないとあまり意味がない
+      return ("   " + str).slice(-3)
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .container {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 100%;
 }
 
 .title {
@@ -173,10 +177,21 @@ export default {
   padding-top: 15px;
 }
 
+.content {
+  width: 80%;
+  max-width: 800px;
+}
+
 .state-display {
+  width: 100%;
   background-color: rgba(255, 255, 255, .8);
   padding: 10px;
   border-radius: 10px;
+}
+
+.button {
+  margin: 5px;
+  letter-spacing: 3px;
 }
 .bg_action {
   background-color: #F00;
