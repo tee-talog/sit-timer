@@ -6,10 +6,29 @@
         <p>{{ type }}</p>
       </div>
       <div>
-        <button @click="handleStartClick" v-if="standby">start</button>
-        <button @click="handleRestartClick" v-else-if="paused">restart</button>
-        <button @click="handlePauseClick" v-else>pause</button>
-        <button @click="handleStopClick">stop</button>
+        <el-button
+          type="primary"
+          class="start-button"
+          @click="handleStartClick"
+          v-if="standby"
+        >start</el-button>
+        <el-button
+          type="primary"
+          class="restart-button"
+          @click="handleRestartClick"
+          v-else-if="paused"
+        >restart</el-button>
+        <el-button
+          type="warning"
+          class="pause-button"
+          @click="handlePauseClick"
+          v-else
+        >pause</el-button>
+        <el-button
+          type="danger"
+          class="stop-button"
+          @click="handleStopClick"
+        >stop</el-button>
       </div>
     </article>
   </section>
