@@ -4,6 +4,12 @@
       <div class="state-display">
         <p>残り時間：{{ remainingTime }}秒</p>
         <p>{{ type }}</p>
+        <el-progress
+          :text-inside="true"
+          :stroke-width="20"
+          :percentage="progressOfSchedule"
+          :status="(progressOfSchedule === 100) ? 'success' : ''"
+        ></el-progress>
       </div>
       <div>
         <el-button
@@ -68,7 +74,8 @@ export default {
       remainingTime: 0,
       type: Type.STANDBY,
       paused: false,
-      stop: false
+      stop: false,
+      progress: 0
     }
   },
   methods: {
@@ -92,6 +99,7 @@ export default {
             }
           }
         }
+        this.progress++
       }
       // 初期化
       this.reset()
@@ -113,6 +121,7 @@ export default {
       this.remainingTime = 0
       this.type = Type.STANDBY
       this.paused = false
+      this.progress = 0
     }
   },
   computed: {
@@ -121,6 +130,12 @@ export default {
     },
     bgColorClass () {
       return bgColorClassDefinition[this.type] || ""
+    },
+    progressOfSchedule () {
+      return Math.round(this.progress / (this.schedule.length - 1) * 100)
+    },
+    steps () {
+      return this.schedule.filter((elm) => elm.type !== Type.PRECOUNT)
     }
   },
   filters: {
