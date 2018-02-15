@@ -3,7 +3,7 @@
     <article class="content">
       <div class="state-display">
         <p>残り{{ remainingTime | spacePadding }}秒</p>
-        <p>{{ type }}</p>
+        <p>{{ type.message }}</p>
         <el-progress
           :text-inside="true"
           :stroke-width="20"
@@ -43,19 +43,34 @@
 
 <script>
 const Type = {
-  STANDBY: "Standby",
+  STANDBY: {
+    message: "Standby",
+    color: "#ffffff"
+  },
 
-  SPRINT: "Sprint",
-  COOL_DOWN: "Cool-Down",
-  INTERVAL: "Interval",
-  WARM_UP: "Warm-Up"
+  SPRINT: {
+    message: "Sprint",
+    color: ""
+  },
+  COOL_DOWN: {
+    message: "Cool-Down",
+    color: ""
+  },
+  INTERVAL: {
+    message: "Interval",
+    color: ""
+  },
+  WARM_UP: {
+    message: "Warm-up",
+    color: ""
+  }
 }
 
 const bgColorClassDefinition = {
-  [Type.SPRINT]: "bg_sprint",
-  [Type.COOL_DOWN]: "bg_cool-down",
-  [Type.WARM_UP]: "bg_warm-up",
-  [Type.INTERVAL]: "bg_interval"
+  [Type.SPRINT.message]: "bg_sprint",
+  [Type.COOL_DOWN.message]: "bg_cool-down",
+  [Type.WARM_UP.message]: "bg_warm-up",
+  [Type.INTERVAL.message]: "bg_interval"
 }
 
 // ミリ秒スリープする関数
@@ -128,10 +143,10 @@ export default {
   },
   computed: {
     standby () {
-      return this.type === Type.STANDBY
+      return this.type.message === Type.STANDBY.message
     },
     bgColorClass () {
-      return bgColorClassDefinition[this.type] || ""
+      return bgColorClassDefinition[this.type.message] || ""
     },
     progressOfSchedule () {
       return Math.round(this.progress / (this.schedule.length - 1) * 100)
