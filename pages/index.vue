@@ -10,32 +10,32 @@
           :percentage="progressOfSchedule"
           :status="(progressOfSchedule === 100) ? 'success' : ''"
         ></el-progress>
-      </div>
 
-      <div>
-        <el-button
-          type="primary"
-          class="button start-button"
-          @click="handleStartClick"
-          v-if="standby"
-        >start</el-button>
-        <el-button
-          type="primary"
-          class="button restart-button"
-          @click="handleRestartClick"
-          v-else-if="paused"
-        >restart</el-button>
-        <el-button
-          type="warning"
-          class="button pause-button"
-          @click="handlePauseClick"
-          v-else
-        >pause</el-button>
-        <el-button
-          type="danger"
-          class="button stop-button"
-          @click="handleStopClick"
-        >stop</el-button>
+        <div>
+          <el-button
+            type="primary"
+            class="button start-button"
+            @click="handleStartClick"
+            v-if="standby"
+          >start</el-button>
+          <el-button
+            type="primary"
+            class="button restart-button"
+            @click="handleRestartClick"
+            v-else-if="paused"
+          >restart</el-button>
+          <el-button
+            type="warning"
+            class="button pause-button"
+            @click="handlePauseClick"
+            v-else
+          >pause</el-button>
+          <el-button
+            type="danger"
+            class="button stop-button"
+            @click="handleStopClick"
+          >stop</el-button>
+        </div>
       </div>
     </article>
   </section>
@@ -194,13 +194,13 @@ export default {
 
 .state-display {
   width: 100%;
-  background-color: rgba(255, 255, 255, .8);
+  background-color: rgba(255, 255, 255, .6);
   padding: 10px;
   border-radius: 10px;
 }
 
 .button {
-  margin: 5px;
+  margin: 10px 5px 0 5px;
   letter-spacing: 3px;
 }
 </style>
