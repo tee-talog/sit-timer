@@ -1,9 +1,9 @@
 <template>
-  <section class="container" :class="bgColorClass">
+  <section class="container" :style="bgColor">
     <article class="content">
       <div class="state-display">
         <p>残り{{ remainingTime | spacePadding }}秒</p>
-        <p>{{ type }}</p>
+        <p>{{ type.message }}</p>
         <el-progress
           :text-inside="true"
           :stroke-width="20"
@@ -43,19 +43,27 @@
 
 <script>
 const Type = {
-  STANDBY: "Standby",
+  STANDBY: {
+    message: "Standby",
+    color: "ffffff"
+  },
 
-  ACTION: "Action",
-  COOL_DOWN: "Cool-Down",
-  BREAKTIME: "Break Time",
-  STRETCH: "Stretch"
-}
-
-const bgColorClassDefinition = {
-  [Type.ACTION]: "bg_action",
-  [Type.COOL_DOWN]: "bg_cool-down",
-  [Type.STRETCH]: "bg_stretch",
-  [Type.BREAKTIME]: "bg_breaktime"
+  SPRINT: {
+    message: "Sprint",
+    color: "e57272"
+  },
+  COOL_DOWN: {
+    message: "Cool-Down",
+    color: "72e5e5"
+  },
+  INTERVAL: {
+    message: "Interval",
+    color: "727de5"
+  },
+  WARM_UP: {
+    message: "Warm-up",
+    color: "72e57d"
+  }
 }
 
 // ミリ秒スリープする関数
@@ -64,12 +72,12 @@ const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeou
 export default {
   data () {
     const schedule = [
-      { time:   3, type: Type.STRETCH },
-      { time:   2, type: Type.ACTION },
-      { time:   5, type: Type.BREAKTIME },
-      { time:   2, type: Type.ACTION },
-      { time:   5, type: Type.BREAKTIME },
-      { time:   2, type: Type.ACTION },
+      { time:   3, type: Type.WARM_UP },
+      { time:   2, type: Type.SPRINT },
+      { time:   5, type: Type.INTERVAL },
+      { time:   2, type: Type.SPRINT },
+      { time:   5, type: Type.INTERVAL },
+      { time:   2, type: Type.SPRINT },
       { time:   5, type: Type.COOL_DOWN },
     ]
     return {
@@ -128,10 +136,12 @@ export default {
   },
   computed: {
     standby () {
-      return this.type === Type.STANDBY
+      return this.type.message === Type.STANDBY.message
     },
-    bgColorClass () {
-      return bgColorClassDefinition[this.type] || ""
+    bgColor () {
+      return {
+        backgroundColor: `#${this.type.color}`
+      }
     },
     progressOfSchedule () {
       return Math.round(this.progress / (this.schedule.length - 1) * 100)
@@ -193,17 +203,4 @@ export default {
   margin: 5px;
   letter-spacing: 3px;
 }
-.bg_action {
-  background-color: #F00;
-}
-.bg_cool-down {
-  background-color: #00F;
-}
-.bg_stretch {
-  background-color: #FF0;
-}
-.bg_breaktime {
-  background-color: #0F0;
-}
-
 </style>
