@@ -1,5 +1,5 @@
 <template>
-  <section class="container" :class="bgColorClass">
+  <section class="container" :style="bgColor">
     <article class="content">
       <div class="state-display">
         <p>残り{{ remainingTime | spacePadding }}秒</p>
@@ -45,32 +45,25 @@
 const Type = {
   STANDBY: {
     message: "Standby",
-    color: "#ffffff"
+    color: "ffffff"
   },
 
   SPRINT: {
     message: "Sprint",
-    color: ""
+    color: "e57272"
   },
   COOL_DOWN: {
     message: "Cool-Down",
-    color: ""
+    color: "72e5e5"
   },
   INTERVAL: {
     message: "Interval",
-    color: ""
+    color: "727de5"
   },
   WARM_UP: {
     message: "Warm-up",
-    color: ""
+    color: "72e57d"
   }
-}
-
-const bgColorClassDefinition = {
-  [Type.SPRINT.message]: "bg_sprint",
-  [Type.COOL_DOWN.message]: "bg_cool-down",
-  [Type.WARM_UP.message]: "bg_warm-up",
-  [Type.INTERVAL.message]: "bg_interval"
 }
 
 // ミリ秒スリープする関数
@@ -145,8 +138,10 @@ export default {
     standby () {
       return this.type.message === Type.STANDBY.message
     },
-    bgColorClass () {
-      return bgColorClassDefinition[this.type.message] || ""
+    bgColor () {
+      return {
+        backgroundColor: `#${this.type.color}`
+      }
     },
     progressOfSchedule () {
       return Math.round(this.progress / (this.schedule.length - 1) * 100)
@@ -208,17 +203,4 @@ export default {
   margin: 5px;
   letter-spacing: 3px;
 }
-.bg_sprint {
-  background-color: #e57272;
-}
-.bg_cool-down {
-  background-color: #72e5e5;
-}
-.bg_warm-up {
-  background-color: #72e57d;
-}
-.bg_interval {
-  background-color: #727de5;
-}
-
 </style>
