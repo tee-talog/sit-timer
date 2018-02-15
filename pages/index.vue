@@ -194,16 +194,16 @@ export default {
   letter-spacing: 3px;
 }
 .bg_sprint {
-  background-color: #F00;
+  background-color: #e57272;
 }
 .bg_cool-down {
-  background-color: #00F;
+  background-color: #72e5e5;
 }
 .bg_warm-up {
-  background-color: #FF0;
+  background-color: #72e57d;
 }
 .bg_interval {
-  background-color: #0F0;
+  background-color: #727de5;
 }
 
 </style>
