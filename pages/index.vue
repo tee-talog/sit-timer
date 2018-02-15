@@ -45,17 +45,17 @@
 const Type = {
   STANDBY: "Standby",
 
-  ACTION: "Action",
+  SPRINT: "Sprint",
   COOL_DOWN: "Cool-Down",
-  BREAKTIME: "Break Time",
-  STRETCH: "Stretch"
+  INTERVAL: "Interval",
+  WARM_UP: "Warm-Up"
 }
 
 const bgColorClassDefinition = {
-  [Type.ACTION]: "bg_action",
+  [Type.SPRINT]: "bg_sprint",
   [Type.COOL_DOWN]: "bg_cool-down",
-  [Type.STRETCH]: "bg_stretch",
-  [Type.BREAKTIME]: "bg_breaktime"
+  [Type.WARM_UP]: "bg_warm-up",
+  [Type.INTERVAL]: "bg_interval"
 }
 
 // ミリ秒スリープする関数
@@ -64,12 +64,12 @@ const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeou
 export default {
   data () {
     const schedule = [
-      { time:   3, type: Type.STRETCH },
-      { time:   2, type: Type.ACTION },
-      { time:   5, type: Type.BREAKTIME },
-      { time:   2, type: Type.ACTION },
-      { time:   5, type: Type.BREAKTIME },
-      { time:   2, type: Type.ACTION },
+      { time:   3, type: Type.WARM_UP },
+      { time:   2, type: Type.SPRINT },
+      { time:   5, type: Type.INTERVAL },
+      { time:   2, type: Type.SPRINT },
+      { time:   5, type: Type.INTERVAL },
+      { time:   2, type: Type.SPRINT },
       { time:   5, type: Type.COOL_DOWN },
     ]
     return {
@@ -193,16 +193,16 @@ export default {
   margin: 5px;
   letter-spacing: 3px;
 }
-.bg_action {
+.bg_sprint {
   background-color: #F00;
 }
 .bg_cool-down {
   background-color: #00F;
 }
-.bg_stretch {
+.bg_warm-up {
   background-color: #FF0;
 }
-.bg_breaktime {
+.bg_interval {
   background-color: #0F0;
 }
 
