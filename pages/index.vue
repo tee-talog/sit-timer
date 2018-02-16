@@ -2,9 +2,10 @@
   <section class="container" :style="bgColor">
     <article class="content">
       <div class="state-display">
-        <p>残り{{ remainingTime | spacePadding }}秒</p>
-        <p>{{ type.message }}</p>
+        <p class="paragraph">残り{{ remainingTime | spacePadding }}秒</p>
+        <p class="paragraph">{{ type.message }}</p>
         <el-progress
+          class="progress-bar"
           :text-inside="true"
           :stroke-width="20"
           :percentage="progressOfSchedule"
@@ -188,7 +189,7 @@ export default {
 }
 
 .content {
-  width: 80%;
+  width: 85%;
   max-width: 800px;
 }
 
@@ -197,10 +198,19 @@ export default {
   background-color: rgba(255, 255, 255, .6);
   padding: 10px;
   border-radius: 10px;
+  font-size: 1.3em;
+}
+
+.paragraph {
+  margin: 5px;
+}
+
+.progress-bar {
+  margin: 10px 0;
 }
 
 .button {
-  margin: 10px 5px 0 5px;
+  margin: 10px 10px 10px 10px;
   letter-spacing: 3px;
 }
 </style>
