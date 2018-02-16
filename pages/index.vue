@@ -18,24 +18,24 @@
             class="button start-button"
             @click="handleStartClick"
             v-if="standby"
-          >start</el-button>
+          >START</el-button>
           <el-button
             type="primary"
             class="button restart-button"
             @click="handleRestartClick"
             v-else-if="paused"
-          >restart</el-button>
+          >RESTART</el-button>
           <el-button
             type="warning"
             class="button pause-button"
             @click="handlePauseClick"
             v-else
-          >pause</el-button>
+          >PAUSE</el-button>
           <el-button
             type="danger"
             class="button stop-button"
             @click="handleStopClick"
-          >stop</el-button>
+          >STOP</el-button>
         </div>
       </div>
     </article>
