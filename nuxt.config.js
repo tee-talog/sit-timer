@@ -22,6 +22,9 @@ module.exports = {
   */
   build: {
     vendor: ['element-ui'],
+    postcss: [
+      require('postcss-cssnext')()
+    ],
     /*
     ** Run ESLint on save
     */
