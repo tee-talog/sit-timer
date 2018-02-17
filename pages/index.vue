@@ -1,45 +1,43 @@
 <template>
-  <section class="container" :style="bgColor">
-    <article class="content">
-      <div class="state-display">
-        <p class="paragraph">残り{{ remainingTime | spacePadding }}秒</p>
-        <p class="paragraph">{{ type.message }}</p>
-        <el-progress
-          class="progress-bar"
-          :text-inside="true"
-          :stroke-width="20"
-          :percentage="progressOfSchedule"
-          :status="(progressOfSchedule === 100) ? 'success' : ''"
-        ></el-progress>
+  <article class="container" :style="bgColor">
+    <div class="state-display">
+      <p class="paragraph">残り{{ remainingTime | spacePadding }}秒</p>
+      <p class="paragraph">{{ type.message }}</p>
+      <el-progress
+        class="progress-bar"
+        :text-inside="true"
+        :stroke-width="20"
+        :percentage="progressOfSchedule"
+        :status="(progressOfSchedule === 100) ? 'success' : ''"
+      ></el-progress>
 
-        <div>
-          <el-button
-            type="primary"
-            class="button start-button"
-            @click="handleStartClick"
-            v-if="standby"
-          >START</el-button>
-          <el-button
-            type="primary"
-            class="button restart-button"
-            @click="handleRestartClick"
-            v-else-if="paused"
-          >RESTART</el-button>
-          <el-button
-            type="warning"
-            class="button pause-button"
-            @click="handlePauseClick"
-            v-else
-          >PAUSE</el-button>
-          <el-button
-            type="danger"
-            class="button stop-button"
-            @click="handleStopClick"
-          >STOP</el-button>
-        </div>
+      <div>
+        <el-button
+          type="primary"
+          class="button start-button"
+          @click="handleStartClick"
+          v-if="standby"
+        >START</el-button>
+        <el-button
+          type="primary"
+          class="button restart-button"
+          @click="handleRestartClick"
+          v-else-if="paused"
+        >RESTART</el-button>
+        <el-button
+          type="warning"
+          class="button pause-button"
+          @click="handlePauseClick"
+          v-else
+        >PAUSE</el-button>
+        <el-button
+          type="danger"
+          class="button stop-button"
+          @click="handleStopClick"
+        >STOP</el-button>
       </div>
-    </article>
-  </section>
+    </div>
+  </article>
 </template>
 
 <script>
@@ -188,13 +186,9 @@ export default {
   padding-top: 15px;
 }
 
-.content {
+.state-display {
   width: 85%;
   max-width: 800px;
-}
-
-.state-display {
-  width: 100%;
   background-color: rgba(255, 255, 255, .6);
   padding: 10px;
   border-radius: 10px;

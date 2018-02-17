@@ -1,5 +1,8 @@
 <template>
   <el-container class="app-container">
+    <el-header>
+      <sit-header/>
+    </el-header>
     <el-main class="app-main">
       <nuxt/>
     </el-main>
@@ -7,6 +10,13 @@
 </template>
 
 <script>
+import SitHeader from '~/components/SitHeader'
+
+export default {
+  components: {
+    SitHeader
+  }
+}
 </script>
 
 <style>
@@ -55,11 +65,14 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+</style>
 
+<style scoped>
 .app-container {
   height: 100vh;
 }
 .app-main {
   padding: 0;
+  flex: 0 1 100%;
 }
 </style>
