@@ -37,6 +37,10 @@ html {
   padding: 0;
 }
 
+.page-title {
+  font-size: 1.5em;
+}
+
 .button--green {
   display: inline-block;
   border-radius: 4px;
