@@ -7,7 +7,7 @@
       <nuxt-link to="what-is-sit" tag="div" class="menu-item">
         <el-button type="text">"SIT"とは？</el-button>
       </nuxt-link>
-      <nuxt-link to="haw-to-use" tag="div" class="menu-item">
+      <nuxt-link to="how-to-use" tag="div" class="menu-item">
         <el-button type="text">使い方</el-button>
       </nuxt-link>
     </nav>
