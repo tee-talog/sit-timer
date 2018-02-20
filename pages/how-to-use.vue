@@ -1,6 +1,6 @@
 <template>
   <article class="how-to-use-section">
-    <h1 class="page-title">How to use? ～SIT-Timerの使い方～</h1>
+    <h1 class="page-title">SIT-Timerの使い方</h1>
     <p class="paragraph">{{ paragraph }}</p>
     <el-table
       :data="correspondenceTable"
