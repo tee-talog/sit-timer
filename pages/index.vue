@@ -183,7 +183,7 @@ export default {
 }
 
 .button {
-  margin: 10px 10px 10px 10px;
+  margin: 10px;
   letter-spacing: 3px;
 }
 </style>
