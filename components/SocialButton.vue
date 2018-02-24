@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="twitter">
       <a
         href="https://twitter.com/share?ref_src=twsrc%5Etfw"
@@ -11,6 +11,21 @@
       >Tweet</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
+
+    <div class="line">
+      <div
+        class="line-it-button"
+        data-lang="ja"
+        data-type="share-e"
+        data-url="https://tee-talog.github.io/sit-timer/"
+        style="display: none;"
+      ></div>
+      <script
+        src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js"
+        async="async"
+        defer="defer"
+      ></script>
+    </div>
   </div>
 </template>
 
@@ -20,5 +35,8 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+}
 </style>
 
