@@ -12,6 +12,18 @@
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 
+    <div class="facebook">
+      <iframe
+        src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Ftee-talog.github.io%2Fsit-timer%2F&width=88&layout=button&action=like&size=large&show_faces=false&share=false&height=65&appId"
+        width="88"
+        height="65"
+        style="border:none;overflow:hidden"
+        scrolling="no"
+        frameborder="0"
+        allowTransparency="true"
+      ></iframe>
+    </div>
+
     <div class="line">
       <div
         class="line-it-button"
