@@ -3,8 +3,8 @@
     <h1 class="header-title">
       <nuxt-link to="/">SIT-timer</nuxt-link>
     </h1>
-    <div>
-      <div>
+    <div class="header-right">
+      <div class="social">
         <SocialButton/>
       </div>
       <nav class="menu">
@@ -36,11 +36,18 @@ export default {
   align-items: center;
   height: 100%;
 }
+.header-right {
+  display: flex;
+}
 .menu {
   display: flex;
 }
 .menu-item {
   margin: 0 10px;
+}
+.social {
+  display: flex;
+  align-items: stretch;
 }
 </style>
 
