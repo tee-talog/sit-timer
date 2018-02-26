@@ -36,7 +36,6 @@
           @click="handleStopClick"
         >STOP</el-button>
       </div>
-      <SocialButton/>
     </div>
   </article>
 </template>
@@ -69,11 +68,7 @@ const Type = {
 // ミリ秒スリープする関数
 const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeout(() => resolve(), milliseconds))
 
-import SocialButton from '~/components/SocialButton.vue'
 export default {
-  components: {
-    SocialButton
-  },
   data () {
     const schedule = [
       { time:   3, type: Type.WARM_UP },
