@@ -7,17 +7,17 @@
       inline-template
     >
       <div class="g_social-sharing-buttons">
-        <network network="twitter" class="g_social-sharing-buttons-button-link">
+        <network network="twitter">
           <span class="g_social-sharing-buttons-button g_social-sharing-buttons-button-twitter">
             Twitter
           </span>
         </network>
-        <network network="facebook" class="g_social-sharing-buttons-button-link">
+        <network network="facebook">
           <span class="g_social-sharing-buttons-button g_social-sharing-buttons-button-facebook">
             Facebook
           </span>
         </network>
-        <network network="line" class="g_social-sharing-buttons-button-link">
+        <network network="line">
           <span class="g_social-sharing-buttons-button g_social-sharing-buttons-button-line">
             LINE
           </span>
@@ -69,18 +69,5 @@ export default {
 .g_social-sharing-buttons-button-line {
   background-color: #00b900;
   color: #FFF;
-}
-.g_social-sharing-buttons-button-link {
-  vertival-align: middle;
-  display: flex;
-  align-items: center;
-  flex-basis: 5em;
-  /*
-  position: relative;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  */
 }
 </style>
