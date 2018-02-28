@@ -10,6 +10,9 @@
       <nuxt-link to="how-to-use" tag="div" class="menu-item">
         <el-button type="text">使い方</el-button>
       </nuxt-link>
+      <nuxt-link to="about" tag="div" class="menu-item">
+        <el-button type="text">当サイトについて</el-button>
+      </nuxt-link>
     </nav>
   </section>
 </template>
