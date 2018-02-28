@@ -25,6 +25,17 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 800px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
 .paragraph {
   white-space: pre-wrap;
   margin: 10px 0;
