@@ -57,6 +57,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .g_social-sharing-buttons-button-twitter {
   background-color: #1da1f2;
