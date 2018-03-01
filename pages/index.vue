@@ -1,5 +1,5 @@
 <template>
-  <article class="container" :style="bgColor">
+  <article class="main-container" :style="bgColor">
     <div class="state-display">
       <p class="paragraph">残り{{ remainingTime | spacePadding }}秒</p>
       <p class="paragraph">{{ type.message }}</p>
@@ -157,7 +157,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.main-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,10 +172,6 @@ export default {
   padding: 10px;
   border-radius: 10px;
   font-size: 1.3em;
-}
-
-.paragraph {
-  margin: 5px;
 }
 
 .progress-bar {

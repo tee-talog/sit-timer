@@ -1,5 +1,5 @@
 <template>
-  <article class="container">
+  <article class="sub-container">
     <h1 class="page-title">当サイトについて</h1>
     <h2 class="page-subtitle">免責事項</h2>
     <p class="paragraph disclaimer">{{ disclaimer }}</p>
@@ -25,19 +25,4 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  max-width: 800px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-.paragraph {
-  white-space: pre-wrap;
-  margin: 10px 0;
-}
 </style>

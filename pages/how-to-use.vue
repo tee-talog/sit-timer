@@ -1,5 +1,5 @@
 <template>
-  <article class="how-to-use-section">
+  <article class="sub-container">
     <h1 class="page-title">SIT-Timerの使い方</h1>
     <p class="paragraph">{{ paragraph }}</p>
     <el-table
@@ -59,20 +59,5 @@ export default {
 </script>
 
 <style scoped>
-.how-to-use-section {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  max-width: 800px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-.paragraph {
-  white-space: pre-wrap;
-  margin: 10px 0;
-}
 </style>
 
