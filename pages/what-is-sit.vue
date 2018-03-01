@@ -1,5 +1,5 @@
 <template>
-  <article class="what-is-sit-section">
+  <article class="sub-container">
     <h1 class="page-title">"SIT"とは？</h1>
     <p class="paragraph">{{ paragraph }}</p>
   </article>
@@ -33,22 +33,5 @@ export default {
 </script>
 
 <style scoped>
-.what-is-sit-section {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  height: 100%;
-  max-width: 800px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.paragraph {
-  white-space: pre-wrap;
-  margin: 10px 0;
-}
 </style>
 
