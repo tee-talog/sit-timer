@@ -1,7 +1,9 @@
 <template>
   <section class="header-section">
     <h1 class="header-title">
-      <nuxt-link to="/">SIT-timer</nuxt-link>
+      <nuxt-link class="title-link" to="/">
+        <img class="logo" src="~static/Logo.png">
+      </nuxt-link>
     </h1>
     <div class="header-right">
       <div class="social">
@@ -37,6 +39,15 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
+}
+.header-title {
+  height: 90%;
+}
+.title-link {
+  height: 100%;
+}
+.logo {
   height: 100%;
 }
 .header-right {
