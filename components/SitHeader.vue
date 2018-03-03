@@ -1,7 +1,7 @@
 <template>
   <section class="header-section">
     <h1 class="header-title">
-      <nuxt-link to="/">
+      <nuxt-link class="title-link" to="/">
         <img class="logo" src="~static/Logo.png">
       </nuxt-link>
     </h1>
@@ -42,6 +42,9 @@ export default {
   height: 100%;
 }
 .header-title {
+  height: 90%;
+}
+.title-link {
   height: 100%;
 }
 .logo {
