@@ -31,7 +31,7 @@ Start ボタンを押すと、カウントダウンが始まります。
 `
 
 const correspondenceTable = [
-  { content: 'Warm-up', behavior: 'ウォーミングアップ', color: '#72e57d' },
+  { content: 'Warm-Up', behavior: 'ウォーミングアップ', color: '#72e57d' },
   { content: 'Sprint', behavior: '運動', color: '#e57272' },
   { content: 'Interval', behavior: '休憩', color: '#727de5' },
   { content: 'Cool-Down', behavior: 'クールダウン', color: '#72e5e5' }
