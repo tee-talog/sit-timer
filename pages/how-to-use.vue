@@ -15,7 +15,7 @@
         label="行動"
       ></el-table-column>
       <el-table-column
-        prop="color"
+        prop="colorName"
         label="背景色"
       ></el-table-column>
     </el-table>
@@ -31,10 +31,10 @@ Start ボタンを押すと、カウントダウンが始まります。
 `
 
 const correspondenceTable = [
-  { content: 'Warm-up', behavior: 'ウォーミングアップ', color: '#72e57d' },
-  { content: 'Sprint', behavior: '運動', color: '#e57272' },
-  { content: 'Interval', behavior: '休憩', color: '#727de5' },
-  { content: 'Cool-Down', behavior: 'クールダウン', color: '#72e5e5' }
+  { content: 'Warm-Up', behavior: 'ウォーミングアップ', color: '#72e57d', colorName: "緑" },
+  { content: 'Sprint', behavior: '運動', color: '#e57272', colorName: "赤" },
+  { content: 'Interval', behavior: '休憩', color: '#727de5', colorName: "青" },
+  { content: 'Cool-Down', behavior: 'クールダウン', color: '#72e5e5', colorName: "水色" }
 ]
 
 export default {
