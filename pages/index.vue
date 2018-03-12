@@ -60,7 +60,7 @@ const Type = {
     color: "727de5"
   },
   WARM_UP: {
-    message: "Warm-up",
+    message: "Warm-Up",
     color: "72e57d"
   }
 }
