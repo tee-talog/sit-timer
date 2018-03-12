@@ -41,48 +41,15 @@
 </template>
 
 <script>
-const Type = {
-  STANDBY: {
-    message: "Standby",
-    color: "ffffff"
-  },
-
-  SPRINT: {
-    message: "Sprint",
-    color: "e57272"
-  },
-  COOL_DOWN: {
-    message: "Cool-Down",
-    color: "72e5e5"
-  },
-  INTERVAL: {
-    message: "Interval",
-    color: "727de5"
-  },
-  WARM_UP: {
-    message: "Warm-Up",
-    color: "72e57d"
-  }
-}
-
 // ミリ秒スリープする関数
 const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeout(() => resolve(), milliseconds))
 
 export default {
   data () {
-    const schedule = [
-      { time:   3, type: Type.WARM_UP },
-      { time:   2, type: Type.SPRINT },
-      { time:   5, type: Type.INTERVAL },
-      { time:   2, type: Type.SPRINT },
-      { time:   5, type: Type.INTERVAL },
-      { time:   2, type: Type.SPRINT },
-      { time:   5, type: Type.COOL_DOWN },
-    ]
     return {
-      schedule,
+      schedule: this.$store.state.schedule,
       remainingTime: 0,
-      type: Type.STANDBY,
+      type: this.$store.state.Type.STANDBY,
       paused: false,
       stop: false,
       progress: 0
@@ -128,14 +95,14 @@ export default {
     },
     reset () {
       this.remainingTime = 0
-      this.type = Type.STANDBY
+      this.type = this.$store.state.Type.STANDBY
       this.paused = false
       this.progress = 0
     }
   },
   computed: {
     standby () {
-      return this.type.message === Type.STANDBY.message
+      return this.type.message === this.$store.state.Type.STANDBY.message
     },
     bgColor () {
       return {
