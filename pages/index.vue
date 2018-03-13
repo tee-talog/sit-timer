@@ -1,6 +1,13 @@
 <template>
   <article class="main-container" :style="bgColor">
     <div class="state-display">
+      <div class="customize">
+        <el-switch
+          :value="willWarmUp"
+          @change="handleChangeWillWarmUp"
+          active-text="Warm-Up"
+        ></el-switch>
+      </div>
       <p class="paragraph">残り{{ remainingTime | spacePadding }}秒</p>
       <p class="paragraph">{{ type.message }}</p>
       <el-progress
@@ -98,6 +105,9 @@ export default {
       this.type = this.$store.state.Type.STANDBY
       this.paused = false
       this.progress = 0
+    },
+    handleChangeWillWarmUp () {
+      this.$store.commit('changeWillWarmUp')
     }
   },
   computed: {
@@ -111,6 +121,9 @@ export default {
     },
     progressOfSchedule () {
       return Math.round(this.progress / (this.schedule.length - 1) * 100)
+    },
+    willWarmUp () {
+      return this.$store.state.customize.willWarmUp
     }
   },
   filters: {

@@ -34,9 +34,15 @@ const schedule = [
 
 export const state = () => ({
   Type,
-  schedule
+  schedule,
+  customize: {
+    willWarmUp: true
+  }
 })
 
 export const mutations = {
+  changeWillWarmUp (state) {
+    state.customize.willWarmUp = !state.customize.willWarmUp
+  }
 }
 
