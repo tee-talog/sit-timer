@@ -54,7 +54,7 @@ const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeou
 export default {
   data () {
     return {
-      schedule: this.$store.state.schedule,
+      schedule: this.$store.getters.schedule,
       remainingTime: 0,
       type: this.$store.state.Type.STANDBY,
       paused: false,
@@ -64,6 +64,7 @@ export default {
   },
   methods: {
     async handleStartClick () {
+      this.schedule = this.$store.getters.schedule
       // 一番最初しか呼ばれない
       for (let { time, type } of this.schedule) {
         this.type = type
