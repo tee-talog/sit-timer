@@ -7,11 +7,16 @@
           @change="handleChangeWillWarmUp"
           active-text="Warm-Up"
         ></el-switch>
-        <el-input-number
-          :value="sprintTimes"
-          @change="handleChangeSprintTimes"
-          :min="1"
-        ></el-input-number>
+        <div class="sprint-times">
+          <p>Sprint</p>
+          <el-input-number
+            class="sprint-times__select"
+            :value="sprintTimes"
+            @change="handleChangeSprintTimes"
+            :min="1"
+          ></el-input-number>
+          <p>times</p>
+        </div>
       </div>
       <p class="paragraph">残り{{ remainingTime | spacePadding }}秒</p>
       <p class="paragraph">{{ type.message }}</p>
@@ -162,6 +167,24 @@ export default {
   padding: 10px;
   border-radius: 10px;
   font-size: 1.3em;
+}
+
+.customize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sprint-times {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  align-items: center;
+}
+
+.sprint-times__select {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .progress-bar {
