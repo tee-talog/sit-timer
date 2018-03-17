@@ -1,6 +1,23 @@
 <template>
   <article class="main-container" :style="bgColor">
     <div class="state-display">
+      <div class="customize">
+        <el-switch
+          :value="willWarmUp"
+          @change="handleChangeWillWarmUp"
+          active-text="Warm-Up"
+        ></el-switch>
+        <div class="sprint-times">
+          <p>Sprint</p>
+          <el-input-number
+            class="sprint-times__select"
+            :value="sprintTimes"
+            @change="handleChangeSprintTimes"
+            :min="1"
+          ></el-input-number>
+          <p>times</p>
+        </div>
+      </div>
       <p class="paragraph">残り{{ remainingTime | spacePadding }}秒</p>
       <p class="paragraph">{{ type.message }}</p>
       <el-progress
@@ -41,48 +58,14 @@
 </template>
 
 <script>
-const Type = {
-  STANDBY: {
-    message: "Standby",
-    color: "ffffff"
-  },
-
-  SPRINT: {
-    message: "Sprint",
-    color: "e57272"
-  },
-  COOL_DOWN: {
-    message: "Cool-Down",
-    color: "72e5e5"
-  },
-  INTERVAL: {
-    message: "Interval",
-    color: "727de5"
-  },
-  WARM_UP: {
-    message: "Warm-Up",
-    color: "72e57d"
-  }
-}
-
 // ミリ秒スリープする関数
 const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeout(() => resolve(), milliseconds))
 
 export default {
   data () {
-    const schedule = [
-      { time:   3, type: Type.WARM_UP },
-      { time:   2, type: Type.SPRINT },
-      { time:   5, type: Type.INTERVAL },
-      { time:   2, type: Type.SPRINT },
-      { time:   5, type: Type.INTERVAL },
-      { time:   2, type: Type.SPRINT },
-      { time:   5, type: Type.COOL_DOWN },
-    ]
     return {
-      schedule,
       remainingTime: 0,
-      type: Type.STANDBY,
+      type: this.$store.state.Type.STANDBY,
       paused: false,
       stop: false,
       progress: 0
@@ -93,6 +76,7 @@ export default {
       // 一番最初しか呼ばれない
       for (let { time, type } of this.schedule) {
         this.type = type
+        this.progress++
         for (let i of Array(time + 1).keys()) {
           this.remainingTime = time - i
           // 1秒待つ
@@ -105,11 +89,10 @@ export default {
             // 途中でstopが押された場合
             if (this.stop) {
               this.stop = false
-                return
+              return
             }
           }
         }
-        this.progress++
       }
       // 初期化
       this.reset()
@@ -128,14 +111,20 @@ export default {
     },
     reset () {
       this.remainingTime = 0
-      this.type = Type.STANDBY
+      this.type = this.$store.state.Type.STANDBY
       this.paused = false
       this.progress = 0
+    },
+    handleChangeWillWarmUp () {
+      this.$store.commit('changeWillWarmUp')
+    },
+    handleChangeSprintTimes (value) {
+      this.$store.commit('changeSprintTimes', value)
     }
   },
   computed: {
     standby () {
-      return this.type.message === Type.STANDBY.message
+      return this.type.message === this.$store.state.Type.STANDBY.message
     },
     bgColor () {
       return {
@@ -143,7 +132,16 @@ export default {
       }
     },
     progressOfSchedule () {
-      return Math.round(this.progress / (this.schedule.length - 1) * 100)
+      return Math.round((this.progress / (this.schedule.length)) * 100)
+    },
+    willWarmUp () {
+      return this.$store.state.customize.willWarmUp
+    },
+    sprintTimes () {
+      return this.$store.state.customize.sprintTimes
+    },
+    schedule () {
+      return this.$store.getters.schedule
     }
   },
   filters: {
@@ -172,6 +170,24 @@ export default {
   padding: 10px;
   border-radius: 10px;
   font-size: 1.3em;
+}
+
+.customize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sprint-times {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  align-items: center;
+}
+
+.sprint-times__select {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .progress-bar {
