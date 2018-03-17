@@ -7,6 +7,11 @@
           @change="handleChangeWillWarmUp"
           active-text="Warm-Up"
         ></el-switch>
+        <el-input-number
+          :value="sprintTimes"
+          @change="handleChangeSprintTimes"
+          :min="1"
+        ></el-input-number>
       </div>
       <p class="paragraph">残り{{ remainingTime | spacePadding }}秒</p>
       <p class="paragraph">{{ type.message }}</p>
@@ -59,7 +64,8 @@ export default {
       type: this.$store.state.Type.STANDBY,
       paused: false,
       stop: false,
-      progress: 0
+      progress: 0,
+      sprintTimes: 1
     }
   },
   methods: {
@@ -109,6 +115,9 @@ export default {
     },
     handleChangeWillWarmUp () {
       this.$store.commit('changeWillWarmUp')
+    },
+    handleChangeSprintTimes (value) {
+      this.sprintTimes = value
     }
   },
   computed: {
