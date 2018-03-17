@@ -90,7 +90,7 @@ export default {
             // 途中でstopが押された場合
             if (this.stop) {
               this.stop = false
-                return
+              return
             }
           }
         }
@@ -134,7 +134,7 @@ export default {
       }
     },
     progressOfSchedule () {
-      return Math.round(this.progress / (this.schedule.length - 1) * 100)
+      return Math.round(this.progress / ((this.schedule.length - 1) * 100))
     },
     willWarmUp () {
       return this.$store.state.customize.willWarmUp
