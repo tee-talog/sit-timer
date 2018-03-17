@@ -69,8 +69,7 @@ export default {
       type: this.$store.state.Type.STANDBY,
       paused: false,
       stop: false,
-      progress: 0,
-      sprintTimes: 1
+      progress: 0
     }
   },
   methods: {
@@ -122,7 +121,7 @@ export default {
       this.$store.commit('changeWillWarmUp')
     },
     handleChangeSprintTimes (value) {
-      this.sprintTimes = value
+      this.$store.commit('changeSprintTimes', value)
     }
   },
   computed: {
@@ -139,6 +138,9 @@ export default {
     },
     willWarmUp () {
       return this.$store.state.customize.willWarmUp
+    },
+    sprintTimes () {
+      return this.$store.state.customize.sprintTimes
     }
   },
   filters: {

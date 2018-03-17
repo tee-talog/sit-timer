@@ -35,13 +35,17 @@ export const state = () => ({
   Type,
   _schedule,
   customize: {
-    willWarmUp: true
+    willWarmUp: true,
+    sprintTimes: 1
   }
 })
 
 export const mutations = {
   changeWillWarmUp (state) {
     state.customize.willWarmUp = !state.customize.willWarmUp
+  },
+  changeSprintTimes (state, value) {
+    state.customize.sprintTimes = value
   }
 }
 
