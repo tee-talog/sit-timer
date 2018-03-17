@@ -22,18 +22,17 @@ const Type = {
   }
 }
 
-const _schedule = [
-  { time:   2, type: Type.SPRINT },
-  { time:   5, type: Type.INTERVAL },
-  { time:   2, type: Type.SPRINT },
-  { time:   5, type: Type.INTERVAL },
-  { time:   2, type: Type.SPRINT },
-  { time:   5, type: Type.COOL_DOWN },
+const warmUp = { time: 3, type: Type.WARM_UP }
+
+const oneSprint = [
+  { time: 2, type: Type.SPRINT },
+  { time: 5, type: Type.INTERVAL }
 ]
+
+const cooldown = { time: 5, type: Type.COOL_DOWN }
 
 export const state = () => ({
   Type,
-  _schedule,
   customize: {
     willWarmUp: true,
     sprintTimes: 1
@@ -51,14 +50,18 @@ export const mutations = {
 
 export const getters = {
   schedule: (state) => {
+    let sprints = []
+
     if (state.customize.willWarmUp) {
-      return [
-        { time: 3, type: Type.WARM_UP },
-        ...state._schedule
-      ]
-    } else {
-      return state._schedule
+      sprints = [warmUp]
     }
+
+    for (let i = 0; i < state.customize.sprintTimes; i++) {
+      sprints = [...sprints, ...oneSprint]
+    }
+
+    sprints[sprints.length - 1] = cooldown
+    return sprints
   }
 }
 
