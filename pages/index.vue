@@ -76,6 +76,7 @@ export default {
       // 一番最初しか呼ばれない
       for (let { time, type } of this.schedule) {
         this.type = type
+        this.progress++
         for (let i of Array(time + 1).keys()) {
           this.remainingTime = time - i
           // 1秒待つ
@@ -92,7 +93,6 @@ export default {
             }
           }
         }
-        this.progress++
       }
       // 初期化
       this.reset()
@@ -132,7 +132,7 @@ export default {
       }
     },
     progressOfSchedule () {
-      return Math.round(this.progress / ((this.schedule.length - 1) * 100))
+      return Math.round((this.progress / (this.schedule.length)) * 100)
     },
     willWarmUp () {
       return this.$store.state.customize.willWarmUp
