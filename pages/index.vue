@@ -6,6 +6,7 @@
           :value="willWarmUp"
           @change="handleChangeWillWarmUp"
           active-text="Warm-Up"
+          :disabled="!standby"
         ></el-switch>
         <div class="sprint-times">
           <p>Sprint</p>
@@ -14,6 +15,7 @@
             :value="sprintTimes"
             @change="handleChangeSprintTimes"
             :min="1"
+            :disabled="!standby"
           ></el-input-number>
           <p>times</p>
         </div>
