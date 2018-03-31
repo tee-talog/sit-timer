@@ -10,13 +10,20 @@
         ></el-switch>
         <div class="sprint-times">
           <p>Sprint</p>
-          <el-input-number
+          <el-select
             class="sprint-times__select"
             :value="sprintTimes"
             @change="handleChangeSprintTimes"
-            :min="1"
             :disabled="!standby"
-          ></el-input-number>
+            placeholder=""
+          >
+            <el-option
+              v-for="(option, index) in sprintTimeOptions"
+              :key="index"
+              :label="option"
+              :value="option"
+            ></el-option>
+          </el-select>
           <p>times</p>
         </div>
       </div>
@@ -70,7 +77,8 @@ export default {
       type: this.$store.state.Type.STANDBY,
       paused: false,
       stop: false,
-      progress: 0
+      progress: 0,
+      sprintTimeOptions: [1, 2, 3, 4, 5]
     }
   },
   methods: {
