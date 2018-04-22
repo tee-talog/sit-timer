@@ -21,6 +21,13 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: [
+      'element-ui',
+      'vue-social-sharing'
+    ],
+    postcss: [
+      require('postcss-cssnext')()
+    ],
     /*
     ** Run ESLint on save
     */
@@ -34,5 +41,12 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  plugins: [
+    '~plugins/element-ui',
+    '~plugins/vue-social-sharing'
+  ],
+  css: [
+    'element-ui/lib/theme-chalk/index.css'
+  ]
 }

@@ -1,12 +1,26 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <el-container class="app-container">
+    <el-header>
+      <sit-header/>
+    </el-header>
+    <el-main class="app-main">
+      <nuxt/>
+    </el-main>
+  </el-container>
 </template>
+
+<script>
+import SitHeader from '~/components/SitHeader'
+
+export default {
+  components: {
+    SitHeader
+  }
+}
+</script>
 
 <style>
 html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -19,34 +33,33 @@ html {
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.sub-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  max-width: 800px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.paragraph {
+  white-space: pre-wrap;
+  margin: 10px 0;
 }
+</style>
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+<style scoped>
+.app-container {
+  height: 100vh;
 }
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.app-main {
+  padding: 0;
+  flex: 0 1 100%;
 }
 </style>
