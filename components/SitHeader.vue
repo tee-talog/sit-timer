@@ -6,9 +6,6 @@
       </nuxt-link>
     </h1>
     <div class="header-right">
-      <div class="social">
-        <SocialButton/>
-      </div>
       <nav class="menu">
         <nuxt-link to="what-is-sit" tag="div" class="menu-item">
           <el-button type="text">"SIT"とは？</el-button>
@@ -25,12 +22,7 @@
 </template>
 
 <script>
-import SocialButton from '~/components/SocialButton.vue'
-
 export default {
-  components: {
-    SocialButton
-  }
 }
 </script>
 
