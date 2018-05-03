@@ -33,6 +33,7 @@ const cooldown = { time: 5, type: Type.COOL_DOWN }
 
 export const state = () => ({
   Type,
+  modal: false,
   customize: {
     willWarmUp: true,
     sprintTimes: 1
@@ -45,6 +46,9 @@ export const mutations = {
   },
   changeSprintTimes (state, value) {
     state.customize.sprintTimes = value
+  },
+  changeModalState (state) {
+    state.modal = !state.modal
   }
 }
 
