@@ -56,7 +56,8 @@ export default {
 .g_social-sharing-buttons-button {
   margin: 5px;
   border-radius: 5px;
-  height: 2em;
+  border: solid 3px #0002;
+  height: 2.5em;
   width: 15em;
   display: flex;
   justify-content: center;
