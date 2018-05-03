@@ -63,6 +63,7 @@ export default {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  user-select: none;
 }
 .g_social-sharing-buttons-button-twitter {
   background-color: #1da1f2;
