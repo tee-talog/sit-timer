@@ -62,11 +62,13 @@
           @click="handleStopClick"
         >STOP</el-button>
       </div>
+      <Modal/>
     </div>
   </article>
 </template>
 
 <script>
+import Modal from '~/components/Modal.vue'
 
 // ミリ秒スリープする関数
 const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeout(() => resolve(), milliseconds))
@@ -163,6 +165,7 @@ export default {
     }
   },
   components: {
+    Modal
   }
 }
 </script>
