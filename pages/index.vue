@@ -142,7 +142,7 @@ export default {
       this.$store.commit('changeSprintTimes', value)
     },
     handleShareClick () {
-      this.modal = true
+      this.modal = !this.modal
     }
   },
   computed: {
