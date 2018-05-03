@@ -68,7 +68,7 @@
           @click="handleShareClick"
         >SHARE</el-button>
       </div>
-      <Modal/>
+      <Modal v-if="modal"/>
     </div>
   </article>
 </template>
