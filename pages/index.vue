@@ -87,8 +87,7 @@ export default {
       paused: false,
       stop: false,
       progress: 0,
-      sprintTimeOptions: [1, 2, 3, 4, 5],
-      modal: false
+      sprintTimeOptions: [1, 2, 3, 4, 5]
     }
   },
   methods: {
@@ -142,7 +141,7 @@ export default {
       this.$store.commit('changeSprintTimes', value)
     },
     handleShareClick () {
-      this.modal = !this.modal
+      this.$store.commit('changeModalState')
     }
   },
   computed: {
@@ -165,6 +164,9 @@ export default {
     },
     schedule () {
       return this.$store.getters.schedule
+    },
+    modal () {
+      return this.$store.state.modal
     }
   },
   filters: {
