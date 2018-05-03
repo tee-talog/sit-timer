@@ -62,6 +62,12 @@
           @click="handleStopClick"
         >STOP</el-button>
       </div>
+      <div>
+        <el-button
+          class="button share-button"
+          @click="handleShareClick"
+        >SHARE</el-button>
+      </div>
       <Modal/>
     </div>
   </article>
