@@ -81,7 +81,8 @@ export default {
       paused: false,
       stop: false,
       progress: 0,
-      sprintTimeOptions: [1, 2, 3, 4, 5]
+      sprintTimeOptions: [1, 2, 3, 4, 5],
+      modal: false
     }
   },
   methods: {
@@ -133,6 +134,9 @@ export default {
     },
     handleChangeSprintTimes (value) {
       this.$store.commit('changeSprintTimes', value)
+    },
+    handleShareClick () {
+      this.modal = true
     }
   },
   computed: {
