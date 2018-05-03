@@ -1,5 +1,9 @@
 <template>
-  <div class="modal-section">
+  <div
+    class="modal-section"
+    v-if="modal"
+    @click="handleClickBackground"
+  >
     <SocialButton/>
   </div>
 </template>
@@ -10,6 +14,16 @@ import SocialButton from '~/components/SocialButton.vue'
 export default {
   components: {
     SocialButton
+  },
+  methods: {
+    handleClickBackground () {
+      this.$store.commit('changeModalState')
+    }
+  },
+  computed: {
+    modal () {
+      return this.$store.state.modal
+    }
   }
 }
 </script>

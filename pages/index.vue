@@ -68,7 +68,7 @@
           @click="handleShareClick"
         >SHARE</el-button>
       </div>
-      <Modal v-if="modal"/>
+      <Modal/>
     </div>
   </article>
 </template>
@@ -164,9 +164,6 @@ export default {
     },
     schedule () {
       return this.$store.getters.schedule
-    },
-    modal () {
-      return this.$store.state.modal
     }
   },
   filters: {
