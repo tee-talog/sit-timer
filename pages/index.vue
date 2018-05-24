@@ -62,11 +62,20 @@
           @click="handleStopClick"
         >STOP</el-button>
       </div>
+      <div>
+        <el-button
+          class="button share-button"
+          @click="handleShareClick"
+        >SHARE</el-button>
+      </div>
+      <Modal/>
     </div>
   </article>
 </template>
 
 <script>
+import Modal from '~/components/Modal.vue'
+
 // ミリ秒スリープする関数
 const sleep = async (milliseconds) => new Promise((resolve, reject) => setTimeout(() => resolve(), milliseconds))
 
@@ -130,6 +139,9 @@ export default {
     },
     handleChangeSprintTimes (value) {
       this.$store.commit('changeSprintTimes', value)
+    },
+    handleShareClick () {
+      this.$store.commit('changeModalState')
     }
   },
   computed: {
@@ -160,6 +172,9 @@ export default {
       // 固定長文字列じゃないとあまり意味がない
       return ("   " + str).slice(-3)
     }
+  },
+  components: {
+    Modal
   }
 }
 </script>

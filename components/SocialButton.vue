@@ -40,6 +40,9 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-right: 20px;
 }
 </style>
@@ -48,16 +51,19 @@ export default {
 .g_social-sharing-buttons {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 .g_social-sharing-buttons-button {
-  margin: 0 5px;
+  margin: 5px;
   border-radius: 5px;
-  height: 2em;
-  width: 5em;
+  border: solid 3px #0002;
+  height: 2.5em;
+  width: 15em;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  user-select: none;
 }
 .g_social-sharing-buttons-button-twitter {
   background-color: #1da1f2;

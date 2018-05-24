@@ -5,32 +5,52 @@
         <img class="logo" src="~static/Logo.png">
       </nuxt-link>
     </h1>
-    <div class="header-right">
-      <div class="social">
-        <SocialButton/>
-      </div>
-      <nav class="menu">
-        <nuxt-link to="what-is-sit" tag="div" class="menu-item">
-          <el-button type="text">"SIT"とは？</el-button>
-        </nuxt-link>
-        <nuxt-link to="how-to-use" tag="div" class="menu-item">
-          <el-button type="text">使い方</el-button>
-        </nuxt-link>
-        <nuxt-link to="about" tag="div" class="menu-item">
-          <el-button type="text">当サイトについて</el-button>
-        </nuxt-link>
-      </nav>
-    </div>
+    <nav class="header-right menu-pc">
+      <nuxt-link to="what-is-sit" tag="div" class="menu-item-pc">
+        <el-button type="text">"SIT"とは？</el-button>
+      </nuxt-link>
+      <nuxt-link to="how-to-use" tag="div" class="menu-item-pc">
+        <el-button type="text">使い方</el-button>
+      </nuxt-link>
+      <nuxt-link to="about" tag="div" class="menu-item-pc">
+        <el-button type="text">当サイトについて</el-button>
+      </nuxt-link>
+    </nav>
+    <nav class="header-right menu-mobile">
+      <el-dropdown class="menu-button" trigger="click">
+        <span class="el-dropdown-link menu-icon">
+          <i class="el-icon-menu"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item
+            class="menu-item"
+          >
+            <nuxt-link to="what-is-sit" tag="div" class="menu-item-mobile">
+              <el-button type="text">"SIT"とは？</el-button>
+            </nuxt-link>
+          </el-dropdown-item>
+          <el-dropdown-item
+            class="menu-item"
+          >
+            <nuxt-link to="how-to-use" tag="div" class="menu-item-mobile">
+              <el-button type="text">使い方</el-button>
+            </nuxt-link>
+          </el-dropdown-item>
+          <el-dropdown-item
+            class="menu-item"
+          >
+            <nuxt-link to="about" tag="div" class="menu-item-mobile">
+              <el-button type="text">当サイトについて</el-button>
+            </nuxt-link>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+    </nav>
   </section>
 </template>
 
 <script>
-import SocialButton from '~/components/SocialButton.vue'
-
 export default {
-  components: {
-    SocialButton
-  }
 }
 </script>
 
@@ -53,15 +73,30 @@ export default {
 .header-right {
   display: flex;
 }
-.menu {
-  display: flex;
+.menu-icon {
+  font-size: 36px;
 }
-.menu-item {
+.menu-item-pc {
   margin: 0 10px;
 }
 .social {
   display: flex;
   align-items: stretch;
+}
+
+.menu-pc {
+  display: flex;
+}
+.menu-mobile {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .menu-pc {
+    display: none;
+  }
+  .menu-mobile {
+    display: block;
+  }
 }
 </style>
 
