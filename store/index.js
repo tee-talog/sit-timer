@@ -22,7 +22,7 @@ const Type = {
   }
 }
 
-const warmUp = { time: 3, type: Type.WARM_UP }
+const warmUp = { time: 300, type: Type.WARM_UP }
 
 const oneSprint = [
   { time: 20, type: Type.SPRINT },
