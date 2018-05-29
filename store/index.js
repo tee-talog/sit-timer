@@ -25,18 +25,18 @@ const Type = {
 const warmUp = { time: 3, type: Type.WARM_UP }
 
 const oneSprint = [
-  { time: 2, type: Type.SPRINT },
-  { time: 5, type: Type.INTERVAL }
+  { time: 20, type: Type.SPRINT },
+  { time: 120, type: Type.INTERVAL }
 ]
 
-const cooldown = { time: 5, type: Type.COOL_DOWN }
+const cooldown = { time: 120, type: Type.COOL_DOWN }
 
 export const state = () => ({
   Type,
   modal: false,
   customize: {
     willWarmUp: true,
-    sprintTimes: 1
+    sprintTimes: 3
   }
 })
 
